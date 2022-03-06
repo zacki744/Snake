@@ -4,10 +4,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <string>
-
 using namespace std;
-
-
 class Game
 {
 public:

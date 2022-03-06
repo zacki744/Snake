@@ -1,6 +1,4 @@
 #include "../include/Entety.hpp"
-
-
 using namespace std;
 using namespace sf;
 
@@ -16,8 +14,6 @@ Snake::Snake(sf::RenderWindow& window, int sSize, int sSpeed, string Color) : mW
     sf::Clock mClock;
     
 }
-
-
 
 void Snake::AddCase() 
 {
@@ -96,8 +92,6 @@ void Snake::Move() // Move the snake every 250 ms and check collision
     }
 }
 
-
-
 void Snake::Update(Event& event) // Check key input
 {
     if (event.type == sf::Event::KeyPressed)
@@ -161,8 +155,6 @@ std::vector<sf::RectangleShape> Snake::getSnakepos()
 {
     return this->mSnakes;
 }
-
-
 
 Food::Food(sf::RenderWindow& window, int sSize) : mWindow(window), mSize(sSize)
 {
