@@ -1,4 +1,6 @@
 #include "../include/state.hpp"
+#include "../include/Collision.hpp"
+
 
 Game::Game()
 {
@@ -142,6 +144,7 @@ void Game::GameLoop()
 				state = STATE::DEAD;
 			}
 		}
+
 		
 		if (state == STATE::DEAD)
 		{
@@ -153,6 +156,7 @@ void Game::GameLoop()
 			}
 			int score = check.getScore();
 			myfile << score << std::endl;
+			std::cout << "Your score was: " << score << endl;
 			myfile.close();
 			window.close();
 			menueLoop();

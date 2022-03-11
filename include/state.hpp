@@ -1,10 +1,9 @@
 #pragma once
-#include "../include/Entety.hpp"
-#include "Entety.hpp"
-#include <iostream>
+#include "Food.hpp"
+#include "Snake.hpp"
+#include "Collision.hpp"
 #include <SFML/Graphics.hpp>
-#include <string>
-using namespace std;
+
 class Game
 {
 public:

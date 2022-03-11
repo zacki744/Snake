@@ -1,4 +1,4 @@
-﻿#include "Snake.h"
+﻿#include "main.h"
 
 int main()
 {
