@@ -1,5 +1,8 @@
-#include "../include/state.hpp"
+#include "../include/State.hpp"
 #include "../include/Collision.hpp"
+#include "Collision.cpp"
+#include "Food.cpp"
+#include "Snake.cpp"
 
 
 Game::Game()
