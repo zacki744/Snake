@@ -1,5 +1,7 @@
+#ifndef SNAKE_H
+#define SNAKE_H
+#pragma once
 #include "Collision.hpp"
-#include <SFML/Graphics.hpp>
 
 class Snake
 {
@@ -26,3 +28,5 @@ private:
     float mCurrentTime;
     string color;
 };
+
+#endif

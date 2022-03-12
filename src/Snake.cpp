@@ -1,5 +1,7 @@
-#include "..\include\Snake.hpp"
-#include "..\include\Collision.hpp"
+#pragma once
+
+#include "Snake.hpp"
+#include "Collision.hpp"
 
 Snake::Snake(sf::RenderWindow& window, int sSize, int sSpeed, string Color) : mWindow(window), mSize(sSize), mSpeed(sSpeed), color(Color)
 {

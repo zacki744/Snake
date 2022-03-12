@@ -1,13 +1,11 @@
-#include "../include/Food.hpp"
-#include "../include/Snake.hpp"
-#include "../include/Collision.hpp"
+#pragma once
 
-
-
+#include "Food.hpp"
+#include "Snake.hpp"
 Food::Food(sf::RenderWindow& window, int sSize) : mWindow(window), mSize(sSize)
 {
-    mFood.setRadius(mSize / 2); // Food circle
-    mFood.setFillColor(sf::Color::Green);
+    this->mFood.setRadius(mSize / 2); // Food circle
+    this->mFood.setFillColor(sf::Color::Green);
     Snake snake(window, 32, 32, "Yellow");
     GenerateFood(snake.getSnakepos());
 }
@@ -20,7 +18,7 @@ void Food::GenerateFood(std::vector<sf::RectangleShape>& mSnakes)
     do
     {
         c = 0;
-        randomX = rand() % (mWindow.getSize().x / mSize);
+        randomX = rand() % (this->mWindow.getSize().x / this->mSize);
         randomY = rand() % (mWindow.getSize().y / mSize);
         for (unsigned int i = 0; i < mSnakes.size(); i++)
         {

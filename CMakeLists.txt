@@ -13,22 +13,14 @@ set(SFML_STATIC_LIBRARIES TRUE)
 find_package(SFML 2.5.1 COMPONENTS system window main graphics)
 include_directories(${SFML_INCLUDE_DIR})
 
+include_directories("${CMAKE_CURRENT_LIST_DIR}/include")
+include_directories("${CMAKE_CURRENT_LIST_DIR}/src")
 set(source_files   
-        main.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/src/Snake.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/src/Food.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/src/Collision.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/src/State.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/include/Snake.hpp
-        ${CMAKE_CURRENT_LIST_DIR}/include/Food.hpp
-        ${CMAKE_CURRENT_LIST_DIR}/include/Collision.hpp
-        ${CMAKE_CURRENT_LIST_DIR}/include/State.hpp
+        "main.cpp"
 )
 include_directories()
 
 add_executable(Snake ${source_files})
 target_link_libraries(Snake PRIVATE sfml-graphics sfml-window)
 #heders
-target_include_directories(Snake
-    PRIVATE "${CMAKE_CURRENT_LIST_DIR}/include"                          
-)
+

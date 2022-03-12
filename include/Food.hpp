@@ -1,12 +1,7 @@
+#ifndef FOOD_H
+#define FOOD_H
+#pragma once
 #include "Collision.hpp"
-#include "state.hpp"
-#include <iostream>
-#include <SFML/Graphics.hpp>
-#include <cstdlib>
-#include <ctime>
-#include <string>
-#include <fstream>
-
 class Food
 {
 public:
@@ -20,3 +15,5 @@ private:
     int mSize;
 
 };
+
+#endif

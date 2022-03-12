@@ -1,6 +1,7 @@
-#ifndef SNAKE_H_INCLUDED
-#define SNAKE_H_INCLUDED
-#include "state.hpp"
+#ifndef COLLISION_H
+#define COLLISION_H
+
+#pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <cstdlib>
@@ -8,7 +9,6 @@
 #include <string>
 #include <fstream>
 using namespace std;
-using namespace sf;
 enum class Direction { UP, RIGHT, DOWN, LEFT };
 enum class STATE { ALIVE, DEAD, EAT };
 
@@ -31,9 +31,6 @@ private:
     std::string results;
     sf::Font font;
     sf::Text text;
-
-
-
 };
 
-#endif // SNAKE_H_INCLUDED
+#endif

@@ -1,5 +1,6 @@
-#include "../include/Collision.hpp"
+#pragma once
 
+#include "Collision.hpp"
 
 collision::collision(sf::RenderWindow& Window, int mSize): mWindow(Window), mSize(mSize)
 {
