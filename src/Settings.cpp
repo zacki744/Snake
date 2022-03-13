@@ -32,7 +32,7 @@ Setings::Setings()
 
 	// color menue
 	this->color[0].setFont(font);
-	color[0].setFillColor(sf::Color::White);
+	color[0].setFillColor(sf::Color::Red);
 	color[0].setString("Yellow");
 	color[0].setPosition(sf::Vector2f(SCREEN_WIDTH / 3, SCREEN_HEIGHT / 8));
 

@@ -5,19 +5,17 @@
 class Game
 {
 public:
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 640
+	#define SCREEN_WIDTH 800
+	#define SCREEN_HEIGHT 640
 	Game();
 	void menueLoop();
-	void GameLoop(sf::RenderWindow& Gwindow);
-	void settings(sf::RenderWindow& Swindow);
+	void GameLoop(sf::RenderWindow& Window);
+	void settings(sf::RenderWindow& Window);
 	void ChengecolorS(std::string newColor);
-	void settingsSColor();
+	void settingsSColor(sf::RenderWindow& window);
 
 private:
 	//main game settings
-	
-
 	bool gamePause;
 
 	sf::Text text;

@@ -29,23 +29,23 @@ Game::Game()
 // this is the menue loop. this is the first thing the player sees.
 void Game::menueLoop()
 {
-	sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_WIDTH), "Snake game");
+	sf::RenderWindow Window(sf::VideoMode(SCREEN_WIDTH, SCREEN_WIDTH), "Snake game");
 	sf::String playerInput;
 	sf::Text playerText;
-	window.setFramerateLimit(120);
-	window.setKeyRepeatEnabled(false);
+	Window.setFramerateLimit(120);
+	Window.setKeyRepeatEnabled(false);
 
 	Menu menue;
-	menue.Draw(window);
+	menue.Draw(Window);
 
-	while (window.isOpen())
+	while (Window.isOpen())
 	{
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (Window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
 			{
-				window.close();
+				Window.close();
 			}
 
 			if ((event.type == sf::Event::KeyReleased) && (event.key.code == sf::Keyboard::Up))
@@ -63,19 +63,18 @@ void Game::menueLoop()
 				switch (index)
 				{
 				case 0:
-					window.close();
-					this->GameLoop(window);
+					this->GameLoop(Window);
 					break;
 				case 1:
 					//window.close();
-					settings(window);
+					settings(Window);
 					break;
 				case 2:
 					menue.higscore();
 					break;
 
 				case 3:
-					window.close();
+					Window.close();
 					break;
 				}
 			}
@@ -86,31 +85,28 @@ void Game::menueLoop()
 			}
 
 
-			window.draw(playerText);
+			Window.draw(playerText);
 		}
-		window.clear(sf::Color(0, 0, 0));
-		menue.Draw(window);
-		window.display();
+		Window.clear(sf::Color(0, 0, 0));
+		menue.Draw(Window);
+		Window.display();
 	}
-	window.close();
-
 }
 
 
 
 // this is the main game loop. in this loop the game is generated with the help of the diferernt classes
-void Game::GameLoop(sf::RenderWindow& Gwindow)
+void Game::GameLoop(sf::RenderWindow& Window)
 {
-	sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_WIDTH), "Snake game");
-	window.setFramerateLimit(120);
-	window.setKeyRepeatEnabled(false);
+	Window.setFramerateLimit(120);
+	Window.setKeyRepeatEnabled(false);
 
-	Snake snake(window, 32, 32, this->snakeColor);
+	Snake snake(Window, 32, 32, this->snakeColor);
 	snake.changeColor(this->snakeColor);
-	Food food(window, 32);
-	collision check(window, 32);
+	Food food(Window, 32);
+	collision check(Window, 32);
 
-	while (window.isOpen())
+	while (Window.isOpen())
 	{
 		STATE state = check.colisioncheck(snake.getSnakepos(), food.getfoodPos());
 		if (!gamePause)
@@ -119,11 +115,11 @@ void Game::GameLoop(sf::RenderWindow& Gwindow)
 		}
 
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (Window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
 			{
-				window.close();
+				Window.close();
 			}
 
 			if ((event.type == sf::Event::KeyReleased) && (event.key.code == sf::Keyboard::P))
@@ -161,7 +157,6 @@ void Game::GameLoop(sf::RenderWindow& Gwindow)
 			myfile << score << std::endl;
 			std::cout << "Your score was: " << score << endl;
 			myfile.close();
-			window.close();
 			menueLoop();
 
 		}
@@ -174,36 +169,33 @@ void Game::GameLoop(sf::RenderWindow& Gwindow)
 			check.changeState(temp);
 		}
 
-		window.clear(sf::Color(0, 0, 0));
+		Window.clear(sf::Color(0, 0, 0));
 		snake.Draw();
 		food.draw();
 		check.draw();
-		window.display();
+		Window.display();
 	}
-	window.close();
-
 }
 
 // the options menue
-void Game::settings(sf::RenderWindow& Swindow)
+void Game::settings(sf::RenderWindow& Window)
 {
 	//sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_WIDTH), "Snake game");
-	sf::RenderWindow& window = Swindow;
-
-	window.setFramerateLimit(120);
-	window.setKeyRepeatEnabled(false);
+	Window.setFramerateLimit(120);
+	Window.setKeyRepeatEnabled(false);
 
 	Setings menue;
-	menue.Draw(window);
+	menue.Draw(Window);
+	bool inSettings = true;
 
-	while (window.isOpen())
+	while (inSettings)
 	{
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (Window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
 			{
-				window.close();
+				Window.close();
 			}
 
 			if ((event.type == sf::Event::KeyReleased) && (event.key.code == sf::Keyboard::Up))
@@ -221,25 +213,24 @@ void Game::settings(sf::RenderWindow& Swindow)
 				switch (index)
 				{
 				case 0: // return
-					window.close();
+					inSettings = false;
 					this->menueLoop();
 					break;
 				case 1:// change snake color
-					window.close();
-					settingsSColor();
+					inSettings = false;
+					settingsSColor(Window);
 					break;
 				case 2://quit
-					window.close();
+					inSettings = false;
+					Window.close();
 					break;
 				}
 			}
 		}
-		window.clear(sf::Color(0, 0, 0));
-		menue.Draw(window);
-		window.display();
+		Window.clear(sf::Color(0, 0, 0));
+		menue.Draw(Window);
+		Window.display();
 	}
-	window.close();
-
 }
 
 
@@ -250,10 +241,8 @@ void Game::ChengecolorS(std::string newColor)
 	this->snakeColor = newColor;
 }
 
-void Game::settingsSColor()
+void Game::settingsSColor(sf::RenderWindow& window)
 {
-	sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_WIDTH), "Snake game");
-
 	bool change_colorSnake = false;
 
 
@@ -290,18 +279,15 @@ void Game::settingsSColor()
 				{
 				case 0:
 					this->ChengecolorS("Yellow");
-					window.close();
-					//settings();
+					settings(window);
 					break;
 				case 1:
 					this->ChengecolorS("Red");
-					window.close();
-					//settings();
+					settings(window);
 					break;
 				case 2:
 					this->ChengecolorS("Green");
-					window.close();
-					//settings();
+					settings(window);
 					break;
 				}
 			}
