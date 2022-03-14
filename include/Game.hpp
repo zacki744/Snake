@@ -8,7 +8,8 @@ public:
 	#define SCREEN_WIDTH 800
 	#define SCREEN_HEIGHT 640
 	Game();
-	void menueLoop();
+	void initWindow();
+	void menueLoop(sf::RenderWindow& Window);
 	void GameLoop(sf::RenderWindow& Window);
 	void settings(sf::RenderWindow& Window);
 	void ChengecolorS(std::string newColor);

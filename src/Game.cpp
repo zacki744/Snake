@@ -26,15 +26,19 @@ Game::Game()
 	this->snakeColor = "Yellow";
 }
 
-// this is the menue loop. this is the first thing the player sees.
-void Game::menueLoop()
+void Game::initWindow()
 {
 	sf::RenderWindow Window(sf::VideoMode(SCREEN_WIDTH, SCREEN_WIDTH), "Snake game");
 	sf::String playerInput;
 	sf::Text playerText;
 	Window.setFramerateLimit(120);
 	Window.setKeyRepeatEnabled(false);
+	menueLoop(Window);
+}
 
+// this is the menue loop. this is the first thing the player sees.
+void Game::menueLoop(sf::RenderWindow &Window)
+{
 	Menu menue;
 	menue.Draw(Window);
 
@@ -78,14 +82,6 @@ void Game::menueLoop()
 					break;
 				}
 			}
-			if (event.type == sf::Event::TextEntered)
-			{
-				playerInput += event.text.unicode;
-				playerText.setString(playerInput);
-			}
-
-
-			Window.draw(playerText);
 		}
 		Window.clear(sf::Color(0, 0, 0));
 		menue.Draw(Window);
@@ -157,7 +153,7 @@ void Game::GameLoop(sf::RenderWindow& Window)
 			myfile << score << std::endl;
 			std::cout << "Your score was: " << score << endl;
 			myfile.close();
-			menueLoop();
+			menueLoop(Window);
 
 		}
 		if (state == STATE::EAT)
@@ -214,7 +210,7 @@ void Game::settings(sf::RenderWindow& Window)
 				{
 				case 0: // return
 					inSettings = false;
-					this->menueLoop();
+					this->menueLoop(Window);
 					break;
 				case 1:// change snake color
 					inSettings = false;
