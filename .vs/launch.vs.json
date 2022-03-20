@@ -1,0 +1,40 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "snake.exe",
+      "name": "snake.exe"
+    },
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "Snake.exe",
+      "name": "Snake.exe"
+    },
+    {
+      "configurations": [
+        {
+          "name": "Win32",
+          "includePath": [
+            "C:/Snake/SFML/include"
+          ],
+          "defines": [
+            "_DEBUG",
+            "UNICODE",
+            "_UNICODE"
+          ],
+          "intelliSenseMode": "gcc-x64",
+          "browse": {
+            "path": [
+              "C:/SFML-2.5.1/include"
+            ]
+          }
+        }
+      ],
+      "version": 4
+    }
+  ]
+}
