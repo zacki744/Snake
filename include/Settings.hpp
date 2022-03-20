@@ -22,7 +22,6 @@ private:
 	std::string results;
 	sf::Font font;
 	sf::Text color[3];
-
 	int selectetIndex;
 	int CselectetIndex;
 };

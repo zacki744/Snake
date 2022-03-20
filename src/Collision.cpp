@@ -28,7 +28,7 @@ void collision::draw()
 
 STATE collision::colisioncheck(std::vector<sf::RectangleShape>& mSnakes, sf::CircleShape mFood)
 {
-    for ( int i = 2; i < mSnakes.size(); i++) // Snake's boxes
+    for (unsigned int i = 2; i < mSnakes.size(); i++) // Snake's boxes
     {
         if (mSnakes[0].getPosition().x == mSnakes[i].getPosition().x
             && mSnakes[0].getPosition().y == mSnakes[i].getPosition().y)

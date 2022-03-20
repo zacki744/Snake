@@ -94,17 +94,14 @@ void Game::menueLoop(sf::RenderWindow &Window)
 // this is the main game loop. in this loop the game is generated with the help of the diferernt classes
 void Game::GameLoop(sf::RenderWindow& Window)
 {
-	Window.setFramerateLimit(120);
-	Window.setKeyRepeatEnabled(false);
-
 	Snake snake(Window, 32, 32, this->snakeColor);
 	snake.changeColor(this->snakeColor);
 	Food food(Window, 32);
 	collision check(Window, 32);
+	STATE state = check.colisioncheck(snake.getSnakepos(), food.getfoodPos());
 
 	while (Window.isOpen())
 	{
-		STATE state = check.colisioncheck(snake.getSnakepos(), food.getfoodPos());
 		if (!gamePause)
 		{
 			snake.Move();
@@ -140,11 +137,11 @@ void Game::GameLoop(sf::RenderWindow& Window)
 			}
 		}
 
-
+		state = check.colisioncheck(snake.getSnakepos(), food.getfoodPos());
 		if (state == STATE::DEAD)
 		{
 			fstream myfile;
-			myfile.open("c:/snake/score.txt", ios::app);
+			myfile.open("../../../score.txt", ios::app);
 			if (!myfile)
 			{
 				std::cout << "canot open" << endl;

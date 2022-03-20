@@ -7,13 +7,11 @@ class Snake
 {
 public:
     Snake(sf::RenderWindow& window, int sSize, int sSpeed, string color);
-
     void Move();
     void Update(sf::Event& event);
     void Draw();
     void AddCase();
     void changeColor(string newColor);
-
     std::vector<sf::RectangleShape> getSnakepos();
 
 private:
